@@ -1,0 +1,70 @@
+<html>
+    <head>
+        <title>Help Page</title>
+        <style>
+            .tab {position:absolute;left:150px; }
+        </style>
+    </head>
+    <body>
+        <p>
+            <h1>Welcome To Indoor Navigation Help API</h1><br>
+            Here you can read documentation about various other API served and how to use them.
+        </p>
+        <p>
+            <h2>1. Accesing FireBase APIs</h2><br>
+            URL => '/mapALL' [GET]<br>
+            Returns a JSON response with all available <u>building names</u> in it, keyd with 'result'.<br>
+            Example Output => { 'result' : ['building1Name', 'building2Name', 'building3Name']}<br><br>
+
+            URL => '/floorALL/&lt;building&gt;' [GET]<br>
+            Params => Building name[GET/URL]<br>
+            Returns a JSON response with all available <u>floor names</u> in passed building, keyd with 'result'.<br>
+            Example Output => { 'result' : ['floor0', 'floor1']}<br><br>
+
+            URL => '/roomALL/&lt;building&gt;/&lt;floor&gt;' [GET]<br>
+            Params => Building name[GET/URL], Floor Name[GET/URL]<br>
+            Returns a JSON response with all available <u>room names</u> in passed building and floor, keyd with 'result'.<br>
+            Example Output => { 'result' : ['shop1', 'shop2']}<br><br>
+
+            URL => '/room/&lt;building&gt;/&lt;floor&gt;/&lt;room&gt;' [GET]<br>
+            Params => Building name[GET/URL], Floor Name[GET/URL], Room Name[GET/URL]<br>
+            Returns a JSON response with <u>room's px data</u> in passed building and floor, keyd with 'result'<br>
+            Example Output => { 'result' : [69, 420]}<br><br>
+        </p>
+        <p>
+            <h2>2. Accesing Trilateration API</h2><br>
+            URL => '/locate/&lt;building&gt;' [POST]<br>
+            Params => Building name[GET/URL], Router Data(Min 4 required)[POST/JSON]<br>
+            Returns a JSON response with <u>user's lat long</u>(for now, have to change it to px) in passed building, keyd with 'result'.<br>
+            (have to add feature to tell user youre not at that bulding)<br>
+            Example Input => { 'router' : {<br>
+                <span class="tab">'MAC1' : -57,</span><br>
+                <span class="tab">'MAC2' : -50,</span><br>
+                <span class="tab">'MAC3' : -60,</span><br>
+                <span class="tab">'MAC4' : -55</span><br>
+            }}<br>
+            Example Output => { 'result' : ['building1Name', 'building2Name', 'building3Name']}<br><br>
+        </p>
+        <p>
+            <h2>3. Accesing Image APIs</h2><br>
+            URL => '/route/&lt;building&gt;/&lt;floor&gt;' [GET]<br>
+            Params => Building name[GET/URL], Floor Name[GET/URL]<br>
+            Returns a JSON response with <u>map image</u> encoded in b64 for passed building and floor, keyd with 'result'.<br>
+            Example Output => { 'result' : 'encodedImg'}<br><br>
+
+            URL => '/locate/&lt;building&gt;/&lt;floor&gt;' [POST]<br>
+            Params => Building name[GET/URL], Floor Name[GET/URL], Routing Locations[POST/JSON]<br>
+            Returns a JSON response with <u>route img</u> encoded in b64 for passed params, keyd with 'result'.<br>
+            Example Input => {<br>
+                <span class="tab">'origin' : [69, 69],</span><br>
+                <span class="tab">'destination' : [420, 420]</span><br>
+            }<br>
+            Example Output => { 'result' : ['building1Name', 'building2Name', 'building3Name']}<br><br>
+        </p>
+        <p>
+            <h2>3. Accesing Docs APIs</h2><br>
+            URL => '/help' [GET]<br>
+            well, you are here, so you know what it does.
+        </p>
+    </body>
+</html>

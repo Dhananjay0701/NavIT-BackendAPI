@@ -1,0 +1,6 @@
+Flask
+opencv-python
+firebase-admin
+numpy
+matplotlib
+Pillow
